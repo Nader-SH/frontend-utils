@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { uuid, generateId, isClient, isServer } from '../src/misc';
+import { uuid, generateId, isClient, isServer } from '../src/index';
 
 describe('Misc Utilities', () => {
   describe('uuid', () => {

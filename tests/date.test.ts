@@ -8,7 +8,7 @@ import {
   compareDates,
   getDayName,
   getMonthName
-} from '../src/date';
+} from '../src/index';
 
 describe('Date Utilities', () => {
   describe('formatDate', () => {

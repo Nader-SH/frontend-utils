@@ -9,10 +9,16 @@
  */
 export function camelCase(str: string): string {
   return str
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
-      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    .split(/[-_\s]+/)
+    .filter(word => word.length > 0)
+    .map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase();
+      }
+      const firstChar = word.charAt(0).toUpperCase();
+      const rest = word.slice(1).toLowerCase();
+      return firstChar + rest;
     })
-    .replace(/\s+/g, '')
-    .replace(/[_-]/g, '');
+    .join('');
 }
 

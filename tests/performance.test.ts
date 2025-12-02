@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { debounce, throttle, memoize } from '../src/performance';
+import { debounce, throttle, memoize } from '../src/index';
 
 describe('Performance Utilities', () => {
   beforeEach(() => {

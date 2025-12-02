@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { deepClone, deepMerge, isEmptyObject, omit, pick, getNestedValue } from '../src/object';
+import { deepClone, deepMerge, isEmptyObject, omit, pick, getNestedValue } from '../src/index';
 
 describe('Object Utilities', () => {
   describe('deepClone', () => {

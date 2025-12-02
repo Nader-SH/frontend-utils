@@ -7,7 +7,7 @@ import {
   isJSON,
   isUUID,
   isEmpty
-} from '../src/validation';
+} from '../src/index';
 
 describe('Validation Utilities', () => {
   describe('isEmail', () => {
