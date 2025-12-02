@@ -1,4 +1,4 @@
-# FE-utils-pkg-nader
+# @nadershak/utils
 
 A comprehensive, tree-shakable TypeScript utility library for front-end projects. Works with React, Vue, Angular, Svelte, or Vanilla JS.
 
@@ -13,11 +13,11 @@ A comprehensive, tree-shakable TypeScript utility library for front-end projects
 ## Installation
 
 ```bash
-npm install FE-utils-pkg-nader
+npm install @nadershak/utils
 # or
-yarn add FE-utils-pkg-nader
+yarn add @nadershak/utils
 # or
-pnpm add FE-utils-pkg-nader
+pnpm add @nadershak/utils
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ pnpm add FE-utils-pkg-nader
 ### Import individual utilities
 
 ```typescript
-import { capitalize, debounce, formatDate } from 'FE-utils-pkg-nader';
+import { capitalize, debounce, formatDate } from '@nadershak/utils';
 
 const text = capitalize('hello world'); // 'Hello world'
 const debouncedFn = debounce(() => console.log('Hello'), 300);
@@ -35,7 +35,7 @@ const formatted = formatDate(new Date()); // '1/15/2023'
 ### Import React hooks
 
 ```typescript
-import { useLocalStorage } from 'FE-utils-pkg-nader/react';
+import { useLocalStorage } from '@nadershak/utils/react';
 
 function MyComponent() {
   const [user, setUser] = useLocalStorage('user', { name: 'Guest' });
@@ -748,10 +748,10 @@ This package is fully tree-shakable. Import only what you need:
 
 ```typescript
 // ✅ Good - only imports what you use
-import { capitalize, debounce } from 'FE-utils-pkg-nader';
+import { capitalize, debounce } from '@nadershak/utils';
 
 // ❌ Avoid - imports everything
-import * as utils from 'FE-utils-pkg-nader';
+import * as utils from '@nadershak/utils';
 ```
 
 ## Development
