@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { clamp, randomInt, isNumeric, roundTo, percentage, formatNumber } from '../src/number';
+import { clamp, randomInt, isNumeric, roundTo, percentage, formatNumber } from '../src/index';
 
 describe('Number Utilities', () => {
   describe('clamp', () => {

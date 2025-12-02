@@ -9,7 +9,7 @@ import {
   normalizeString,
   isEmail as isEmailString,
   isPhone
-} from '../src/string';
+} from '../src/index';
 
 describe('String Utilities', () => {
   describe('capitalize', () => {

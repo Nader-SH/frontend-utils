@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { unique, chunk, flatten, shuffle, sortByKey, removeItem, groupBy } from '../src/array';
+import { unique, chunk, flatten, shuffle, sortByKey, removeItem, groupBy } from '../src/index';
 
 describe('Array Utilities', () => {
   describe('unique', () => {

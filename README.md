@@ -35,11 +35,9 @@ const formatted = formatDate(new Date()); // '1/15/2023'
 ### Import React hooks
 
 ```typescript
-import { useDebounce, useLocalStorage } from 'frontend-utils/react';
+import { useLocalStorage } from 'frontend-utils/react';
 
 function MyComponent() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearch = useDebounce(searchTerm, 300);
   const [user, setUser] = useLocalStorage('user', { name: 'Guest' });
   
   // ...
@@ -602,14 +600,6 @@ createQueryString({ name: 'John', age: 30 }) // '?name=John&age=30'
 ```
 
 ### React Hooks
-
-#### `useDebounce<T>(value: T, delay?: number): T`
-Debounces a value.
-
-```typescript
-const [searchTerm, setSearchTerm] = useState('');
-const debouncedSearch = useDebounce(searchTerm, 300);
-```
 
 #### `useThrottle<T>(value: T, delay?: number): T`
 Throttles a value.

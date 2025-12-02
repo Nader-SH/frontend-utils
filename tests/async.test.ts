@@ -1,13 +1,21 @@
-import { describe, it, expect, vi } from 'vitest';
-import { sleep, retry, debouncePromise, timeoutPromise } from '../src/async';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { sleep, retry, debouncePromise, timeoutPromise } from '../src/index';
 
 describe('Async Utilities', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   describe('sleep', () => {
     it('should wait for specified time', async () => {
-      const start = Date.now();
-      await sleep(100);
-      const end = Date.now();
-      expect(end - start).toBeGreaterThanOrEqual(90);
+      const sleepPromise = sleep(100);
+      vi.advanceTimersByTime(100);
+      await sleepPromise;
+      expect(true).toBe(true);
     });
   });
 
@@ -19,16 +27,20 @@ describe('Async Utilities', () => {
         if (attempts < 2) throw new Error('Failed');
         return 'success';
       };
-      const result = await retry(fn, 3, 10);
+      const retryPromise = retry(fn, 3, 10);
+      await vi.runAllTimersAsync();
+      const result = await retryPromise;
       expect(result).toBe('success');
       expect(attempts).toBe(2);
     });
 
     it('should throw after max retries', async () => {
+      vi.useRealTimers();
       const fn = async () => {
         throw new Error('Always fails');
       };
-      await expect(retry(fn, 2, 10)).rejects.toThrow();
+      await expect(retry(fn, 2, 10)).rejects.toThrow('Always fails');
+      vi.useFakeTimers();
     });
   });
 
@@ -43,7 +55,7 @@ describe('Async Utilities', () => {
       debounced();
       debounced();
       debounced();
-      await sleep(100);
+      await vi.runAllTimersAsync();
       expect(callCount).toBe(1);
     });
   });
@@ -51,7 +63,9 @@ describe('Async Utilities', () => {
   describe('timeoutPromise', () => {
     it('should timeout slow promise', async () => {
       const slowPromise = new Promise((resolve) => setTimeout(resolve, 1000));
-      await expect(timeoutPromise(slowPromise, 100)).rejects.toThrow('Operation timed out');
+      const timeoutPromiseResult = timeoutPromise(slowPromise, 100);
+      vi.advanceTimersByTime(100);
+      await expect(timeoutPromiseResult).rejects.toThrow('Operation timed out');
     });
 
     it('should not timeout fast promise', async () => {

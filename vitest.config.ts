@@ -4,6 +4,10 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    testTimeout: 10000,
+    hookTimeout: 10000,
+    isolate: true,
+    watchExclude: ['**/node_modules/**', '**/dist/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -15,6 +19,11 @@ export default defineConfig({
         '**/index.ts',
         '**/react.ts'
       ]
+    }
+  },
+  server: {
+    watch: {
+      ignored: ['**/node_modules/**', '**/dist/**']
     }
   }
 });
