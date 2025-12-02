@@ -175,11 +175,13 @@ formatNumber(1234567.89, 'de-DE') // '1.234.567,89'
 ### Date Utilities
 
 #### `formatDate(date: Date | string | number, format?: string | Intl.DateTimeFormatOptions, options?: Intl.DateTimeFormatOptions): string`
-Formats a date.
+Formats a date. Supports custom separators, locale strings, or Intl.DateTimeFormatOptions.
 
 ```typescript
 formatDate(new Date('2023-01-15')) // '1/15/2023'
+formatDate(new Date('2023-01-15'), '-') // '1-15-2023'
 formatDate(new Date('2023-01-15'), 'en-GB') // '15/01/2023'
+formatDate(new Date('2023-01-15'), 'en-US', { dateStyle: 'full' }) // 'Sunday, January 15, 2023'
 ```
 
 #### `timeAgo(date: Date | string | number, now?: Date): string`
