@@ -1,5 +1,5 @@
 {
-  "name": "frontend-utils",
+  "name": "FE-utils",
   "version": "1.0.0",
   "description": "Reusable, tree-shakable utilities for any front-end project",
   "type": "module",
